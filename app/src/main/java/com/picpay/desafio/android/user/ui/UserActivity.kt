@@ -37,8 +37,8 @@ class UserActivity : AppCompatActivity() {
     private fun initObservables() {
         viewModel.viewState.observe(this, Observer {
             when (it) {
-                is UserState.SuccessListUsers -> successApiUsers(it.users)
-                is UserState.ErrorListUsers -> errorApiUsers(it.message)
+                is UserState.SuccessListUsers -> successListUsers(it.users)
+                is UserState.ErrorListUsers -> errorListUsers(it.message)
             }
         })
     }
@@ -53,13 +53,13 @@ class UserActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
     }
 
-    private fun successApiUsers(users: List<UserModel>) {
+    private fun successListUsers(users: List<UserModel>) {
         adapter.users = users
         toggleProgressbar(false)
         toggleList(true)
     }
 
-    private fun errorApiUsers(message: String) {
+    private fun errorListUsers(message: String) {
         showMessageError(message)
         toggleProgressbar(false)
         toggleList(false)
