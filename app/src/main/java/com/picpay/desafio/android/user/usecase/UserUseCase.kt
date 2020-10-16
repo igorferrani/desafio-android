@@ -1,11 +1,11 @@
 package com.picpay.desafio.android.user.usecase
 
-import com.picpay.desafio.android.user.model.ResultUser
+import com.picpay.desafio.android.util.ResultRepository
 import com.picpay.desafio.android.user.model.User
 import com.picpay.desafio.android.user.repository.UserRepository
 
 class UserUseCase(private val repository: UserRepository) {
-    suspend fun getContacts(): ResultUser<List<User>> {
+    suspend fun getContacts(): ResultRepository<List<User>> {
         return try {
             val response = repository.getContactsLocal()
             val data = mutableListOf<User>()
@@ -14,9 +14,13 @@ class UserUseCase(private val repository: UserRepository) {
             } else {
                 data.addAll(repository.getContactsRemote())
             }
-            ResultUser(data = data)
+            ResultRepository(data = data)
         } catch (e: Exception) {
-            ResultUser(isSuccess = false, messageError = e.message.toString(), data = arrayListOf())
+            ResultRepository(
+                isSuccess = false,
+                messageError = e.message.toString(),
+                data = arrayListOf()
+            )
         }
     }
 }
