@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
-import com.picpay.desafio.android.user.model.User
+import com.picpay.desafio.android.user.model.UserModel
 
 class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
 
-    var users: List<User> = emptyList()
+    var users: List<UserModel> = emptyList()
         set(value) {
             val result = DiffUtil.calculateDiff(
                 UserListDiffCallback(

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
-data class ResultRepository<T>(
+data class ResultRepositoryModel<T>(
     var isSuccess: Boolean = true,
     var data: @RawValue T,
     var messageError: String = ""

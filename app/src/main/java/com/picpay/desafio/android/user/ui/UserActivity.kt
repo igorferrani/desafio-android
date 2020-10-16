@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
-import com.picpay.desafio.android.user.model.User
+import com.picpay.desafio.android.user.model.UserModel
 import com.picpay.desafio.android.user.viewmodel.UserViewModel
 import com.picpay.desafio.android.user.viewmodel.state.UserState
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,8 +37,8 @@ class UserActivity : AppCompatActivity() {
     private fun initObservables() {
         viewModel.viewState.observe(this, Observer {
             when (it) {
-                is UserState.SuccessApi -> successApiUsers(it.users)
-                is UserState.ErrorApi -> errorApiUsers(it.message)
+                is UserState.SuccessListUsers -> successApiUsers(it.users)
+                is UserState.ErrorListUsers -> errorApiUsers(it.message)
             }
         })
     }
@@ -53,7 +53,7 @@ class UserActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
     }
 
-    private fun successApiUsers(users: List<User>) {
+    private fun successApiUsers(users: List<UserModel>) {
         adapter.users = users
         toggleProgressbar(false)
         toggleList(true)

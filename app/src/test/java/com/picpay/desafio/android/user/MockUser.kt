@@ -1,12 +1,12 @@
 package com.picpay.desafio.android.user
 
-import com.picpay.desafio.android.util.ResultRepository
-import com.picpay.desafio.android.user.model.User
+import com.picpay.desafio.android.util.ResultRepositoryModel
+import com.picpay.desafio.android.user.model.UserModel
 import com.picpay.desafio.android.user.repository.local.UserEntity
 import java.util.*
 
-val mockListUser: ArrayList<User> = arrayListOf(
-    User(
+val mockListUser: ArrayList<UserModel> = arrayListOf(
+    UserModel(
         1,
         "x",
         "nome usuario",
@@ -23,13 +23,13 @@ val mockListUserEntity: ArrayList<UserEntity> = arrayListOf(
     )
 )
 
-val listContactsSuccess: ResultRepository<List<User>> =
-    ResultRepository(
+val listContactsSuccess: ResultRepositoryModel<List<UserModel>> =
+    ResultRepositoryModel(
         data = mockListUser
     )
 
-val listContactsNotSuccess: ResultRepository<List<User>> =
-    ResultRepository(
+val listContactsNotSuccess: ResultRepositoryModel<List<UserModel>> =
+    ResultRepositoryModel(
         data = arrayListOf(),
         isSuccess = false,
         messageError = "Não foi possível concluir sua solicitação no momento"

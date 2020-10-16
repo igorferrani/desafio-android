@@ -16,7 +16,7 @@ class UserUseCaseTest {
     @Test
     fun `Ao chamar metodo getContacts() com 1 item no local, deve retornar lista de contatos com 1 item vindo do local`(): Unit =
         runBlocking {
-            whenever(mockUserRepository.getContactsLocal()).thenReturn(mockListUser)
+            whenever(mockUserRepository.getContacts()).thenReturn(listContactsSuccess)
 
             // when
             val users = useCase.getContacts()
@@ -29,7 +29,7 @@ class UserUseCaseTest {
     fun `Ao chamar metodo getContacts() com 0 itens no local, deve retornar lista de contatos com 1 item vindo do remoto`(): Unit =
         runBlocking {
             whenever(mockUserRepository.getContactsLocal()).thenReturn(mockListUser)
-            whenever(mockUserRepository.getContactsRemote()).thenReturn(mockListUser)
+            whenever(mockUserRepository.getContacts()).thenReturn(listContactsSuccess)
 
             // when
             val users = useCase.getContacts()

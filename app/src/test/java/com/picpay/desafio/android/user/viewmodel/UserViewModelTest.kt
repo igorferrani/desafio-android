@@ -35,7 +35,7 @@ class UserViewModelTest {
             viewModel.getContacts()
 
             // then
-            assertEquals(UserState.SuccessApi(mockListUser), viewModel.viewState.value)
+            assertEquals(UserState.SuccessListUsers(mockListUser), viewModel.viewState.value)
         }
     }
 
@@ -49,7 +49,7 @@ class UserViewModelTest {
 
             // then
             assertEquals(
-                UserState.ErrorApi("Não foi possível concluir sua solicitação no momento"),
+                UserState.ErrorListUsers("Não foi possível concluir sua solicitação no momento"),
                 viewModel.viewState.value
             )
         }

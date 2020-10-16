@@ -16,9 +16,9 @@ class UserViewModel(private val useCase: UserUseCase) : ViewModel() {
         viewModelScope.launch {
             val response = useCase.getContacts()
             if (response.isSuccess) {
-                state.value = UserState.SuccessApi(response.data)
+                state.value = UserState.SuccessListUsers(response.data)
             } else {
-                state.value = UserState.ErrorApi(response.messageError)
+                state.value = UserState.ErrorListUsers(response.messageError)
             }
         }
     }
