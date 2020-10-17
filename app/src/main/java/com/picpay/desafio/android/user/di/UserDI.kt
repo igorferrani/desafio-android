@@ -13,7 +13,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 object UserDI {
-    val viewModelModule: Module = module {
+    val userModules: Module = module {
         viewModel { UserViewModel(useCase = get()) }
         factory { UserUseCase(repository = get()) }
         factory { UserRepository(get(), get()) }
